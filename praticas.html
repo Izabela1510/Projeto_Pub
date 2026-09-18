@@ -6,106 +6,40 @@
   <title>Práticas</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      padding-top: 70px;
-      font-family: "Inter", sans-serif;
-      background-color: #f8f9fa;
-    }
+    body { padding-top: 70px; font-family: "Inter", sans-serif; background-color: #f8f9fa; }
+    .nav-link { font-weight: 500; margin: 0 1rem; color: #333; transition: color 0.2s, border-bottom 0.2s; }
+    .nav-link:hover { color: #007bff; }
+    .nav-link.active { color: #007bff; border-bottom: 2px solid #007bff; }
+    .accordion-button { background-color: #f8f9fa; color: #0d1b2a; font-size: 1.1rem; border-radius: 0.75rem !important; transition: all 0.2s ease; }
+    .accordion-button:not(.collapsed) { background-color: #eaf0ff; color: #0044cc; box-shadow: none; }
+    .accordion-button::after { transform: rotate(0deg); transition: transform 0.2s ease; }
+    .accordion-button:not(.collapsed)::after { transform: rotate(90deg); }
+    .accordion-body { background-color: #ffffff; border-radius: 0 0 0.75rem 0.75rem; padding: 1.25rem 1.5rem; color: #333; }
+    h1 { font-weight: 700; color: #0d1b2a; margin-bottom: 1rem; }
+    p { color: #555; }
+    .code-container { background-color: #1e1e1e; border-radius: 8px; padding: 16px; position: relative; overflow-x: auto; margin-top: 10px; }
+    .code-container pre { margin: 0; font-family: 'Fira Code', monospace; font-size: 14px; color: #e0e0e0; }
+    .copy-btn { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; cursor: pointer; font-size: 16px; }
+    .copy-btn:hover { color: #ffffff; }
 
-    /* Navbar */
-    .nav-link {
-      font-weight: 500;
-      margin: 0 1rem;
-      color: #333;
-      transition: color 0.2s, border-bottom 0.2s;
-    }
-
-    .nav-link:hover {
-      color: #007bff;
-    }
-
-    .nav-link.active {
-      color: #007bff;
-      border-bottom: 2px solid #007bff;
-    }
-
-    /* Accordion */
-    .accordion-button {
-      background-color: #f8f9fa;
-      color: #0d1b2a;
-      font-size: 1.1rem;
-      border-radius: 0.75rem !important;
-      transition: all 0.2s ease;
-    }
-
-    .accordion-button:not(.collapsed) {
-      background-color: #eaf0ff;
-      color: #0044cc;
-      box-shadow: none;
-    }
-
-    .accordion-button::after {
-      transform: rotate(0deg);
-      transition: transform 0.2s ease;
-    }
-
-    .accordion-button:not(.collapsed)::after {
-      transform: rotate(90deg);
-    }
-
-    .accordion-body {
-      background-color: #ffffff;
-      border-radius: 0 0 0.75rem 0.75rem;
-      padding: 1.25rem 1.5rem;
-      color: #333;
-    }
-
-    h1 {
-      font-weight: 700;
-      color: #0d1b2a;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      color: #555;
-    }
-
-  .code-container {
-    background-color: #1e1e1e; /* fundo escuro */
-    border-radius: 8px;
-    padding: 16px;
-    position: relative;
-    overflow-x: auto;
-    margin-top: 10px;
-  }
-
-  .code-container pre {
-    margin: 0;
-    font-family: 'Fira Code', monospace;
-    font-size: 14px;
-    color: #e0e0e0;
-  }
-
-  .copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: none;
-    border: none;
-    color: #888;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  .copy-btn:hover {
-    color: #ffffff;
-  }
+    /* USP Gate */
+    #usp-gate { background:#f8f8f5; border:1px solid #ddd; border-radius:14px; padding:2rem 2.5rem; max-width:460px; margin:2rem auto; text-align:center; }
+    #usp-gate h2 { font-size:19px; color:#003B6F; margin:0 0 .5rem; }
+    #usp-gate p { font-size:14px; color:#666; line-height:1.6; margin:0 0 1.2rem; }
+    .btn-usp { display:inline-flex; align-items:center; gap:10px; background:#003B6F; color:white; padding:13px 24px; border-radius:8px; font-size:14px; font-weight:700; border:none; cursor:pointer; transition:background .2s; }
+    .btn-usp:hover { background:#002850; }
+    .usp-info { background:#E8EFF7; border:1px solid #B0C4D8; border-radius:8px; padding:.7rem 1rem; font-size:12px; color:#1A3050; margin-top:1rem; text-align:left; line-height:1.6; }
+    #usp-bar { display:none; background:#E8EFF7; border:1px solid #B0C4D8; border-radius:8px; padding:7px 14px; font-size:13px; color:#1A3050; margin-bottom:1.2rem; align-items:center; gap:10px; }
+    #usp-bar button { margin-left:auto; background:transparent; border:1px solid #B0C4D8; border-radius:5px; padding:3px 10px; font-size:12px; color:#555; cursor:pointer; }
+    #usp-bar button:hover { color:#c00; border-color:#c00; }
+    #conteudo { display:none; }
+    .groups-footer { background:#E8EFF7; border:1px solid #B0C4D8; border-radius:10px; padding:1rem 1.4rem; margin-top:2rem; font-size:14px; color:#1A3050; display:flex; align-items:center; gap:10px; }
+    .groups-footer a { color:#003B6F; font-weight:700; text-decoration:none; }
   </style>
 </head>
 
 <body>
-
-  <!-- Navbar centralizada -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
     <div class="container justify-content-center">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -118,740 +52,432 @@
           <li class="nav-item"><a class="nav-link active" href="praticas.html">Atividades</a></li>
           <li class="nav-item"><a class="nav-link" href="referencia.html">Referências</a></li>
           <li class="nav-item"><a class="nav-link" href="autores.html">Autores</a></li>
+          <li class="nav-item"><a class="nav-link" href="certificado.html">Certificado</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Seção principal -->
+  <!-- Banner Google Groups -->
+  <div style="background:#003B6F;color:white;padding:9px 1.5rem;font-size:13px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+    💬 Dúvidas sobre o curso?
+    <a href="https://groups.google.com/g/SEU_GRUPO_AQUI" target="_blank" rel="noopener"
+       style="color:#F2C94C;font-weight:700;text-decoration:none;">
+      ✉️ Acesse o grupo de discussão no Google Groups →
+    </a>
+  </div>
+
   <section class="container py-5">
-    <h1 class="fw-bold">Atividades</h1>
-    <p class="text-secondary mb-4">Selecione uma atividade abaixo para visualizar seu conteúdo.</p>
 
-    <!-- Accordion único para todas as práticas -->
-    <div class="accordion" id="accordionAtividades">
-
-      <!-- Prática 0 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade0"
-                  aria-expanded="false" aria-controls="collapseAtividade0">
-            PREPARAÇÃO DOS AMBIENTES CONDA
-          </button>
-        </h2>
-        <div id="collapseAtividade0" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <h3>O que é ambiente conda?</h3>
-            <ul>
-              <li> Um ambiente Conda é um espaço isolado dentro do gerenciador de pacotes Conda (usado no Anaconda ou Miniconda) que permite instalar e gerenciar versões específicas de pacotes, bibliotecas e dependências sem interferir em outros projetos.</li>
-              <li> Uma boa prática é utilizar um ambiente conda para cada etapa no processamento dos dados.</li>
-            </ul>
-            <h3>Como usar?</h3>
-            <p><strong>1. Instalar Conda</strong></p>
-            <ul>
-              <li>Baixar e instalar <strong>Anaconda</strong> (completo) ou <strong>Miniconda</strong> (mais leve).</li>
-              <li>Verificar instalação:
-                
-      <div class="code-container">
-        <button class="copy-btn" onclick="copyCode(this)">📋</button>
-        <pre><code>conda --version</code></pre>
-      </div>
-    </li>
-  </ul>
-
-  <p><strong>2. Criar um ambiente</strong></p>
-  <ul>
-    <li>Criar ambiente com nome específico e versão do Python desejada:
-      <div class="code-container">
-        <button class="copy-btn" onclick="copyCode(this)">📋</button>
-        <pre><code>conda create -n meu_ambiente python=3.11</code></pre>
-      </div>
-    </li>
-  </ul>
-
-  <p><strong>3. Ativar e desativar ambiente</strong></p>
-  <ul>
-    <li>Ativar ambiente:
-      <div class="code-container">
-        <button class="copy-btn" onclick="copyCode(this)">📋</button>
-        <pre><code>conda activate meu_ambiente</code></pre>
-      </div>
-    </li><br>
-    <li>Desativar ambiente:
-      <div class="code-container">
-        <button class="copy-btn" onclick="copyCode(this)">📋</button>
-        <pre><code>conda deactivate</code></pre>
-      </div>
-    </li>
-  </ul>
-
-  <p><strong>4. Instalar pacotes</strong></p>
-  <p>⚠️ Nesta etapa, pesquise no Google o nome da ferramenta necessária seguido de <code>conda install</code> para cada atividade. Exemplo: <code>fastqc conda install</code>. Dessa forma, você descobrirá como instalar a ferramenta via Conda, incluindo todas as dependências necessárias.</p>
-  <p>⚠️ Certifique-se de instalar as ferramentas apenas com o ambiente Conda desejado ativo!</p>
-  <ul>
-    <li>Instalar pacotes dentro do ambiente ativo:
-      <div class="code-container">
-        <button class="copy-btn" onclick="copyCode(this)">📋</button>
-        <pre><code>conda install numpy pandas</code></pre>
-      </div>
-    </li><br>
-    <li>Instalar de canais específicos (ex.: conda-forge):
-      <div class="code-container">
-        <button class="copy-btn" onclick="copyCode(this)">📋</button>
-        <pre><code>conda install -c conda-forge pacote</code></pre>
-      </div>
-    </li>
-  </ul>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Prática 1 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade1"
-                  aria-expanded="false" aria-controls="collapseAtividade1">
-            Atividade 1 — Definição do Problema
-          </button>
-        </h2>
-        <div id="collapseAtividade1" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Iniciar o desenvolvimento do projeto. Aqui, você irá estruturar a base do estudo, identificando o que será investigado.</p> 
-            <p><strong>Pergunta Norteadora:</strong> Quais genes estão relacionados ao desenvolvimento do câncer de mama hereditário? (Se o aluno já estiver investigando outra doença, a análise pode ser adaptada para o tema escolhido.)</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Prática 2 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade2"
-                  aria-expanded="false" aria-controls="collapseAtividade2">
-            Atividade 2 — Busca na Literatura
-          </button>
-        </h2>
-        <div id="collapseAtividade2" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Realizar uma pesquisa bibliográfica sobre o tema do projeto para compreender o que já foi estudado, identificar lacunas e fundamentar cientificamente a proposta.</p>
-            <p><strong>Tarefa:</strong></p>
-            <ol>
-              <li>Busque artigos e revisões recentes (últimos 5 anos) em bases científicas como:  
-                <ul>
-                  <li><a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed</a></li>
-                  <li><a href="https://www.scielo.org/" target="_blank">SciELO</a></li>
-                  <li><a href="https://scholar.google.com/" target="_blank">Google Scholar</a></li>
-                </ul>
-               </li>
-              <li>Elabore um parágrafo integrando os achados e explicando como eles justificam e contribuem para o desenvolvimento do seu projeto.</li>
-            </ol>
-            <p><strong>💡 Dica:</strong> Aproveite para buscar estudos que adotem metodologias semelhantes à do seu projeto (como a análise de exoma germinativo) e que disponibilizem seus dados em bancos públicos de acesso aberto.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Prática 3 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade3"
-                  aria-expanded="false" aria-controls="collapseAtividade3">
-            Atividade 3 — Download dos Dados
-          </button>
-        </h2>
-        <div id="collapseAtividade3" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Baixar os dados necessários para o projeto.</p>
-            <p><strong>Tarefa:</strong> </p>
-            <p><strong>1 - </strong>Com base nos dados encontrados durante a busca literária, acesse o banco onde os mesmos foram disponibilizados, encontre o código <strong>SRA</strong> e execute o seguinte comando para baixar:</p>
-            <div class="code-container">
-              <button class="copy-btn" onclick="copyCode(this)">📋</button>
-              <pre><code>/CAMINHO/PARA/O/EXECUTÁVEL/prefetch SRRXXXXXX SRRYYYYYY SRRZZZZZZ</code></pre>
-            </div>
-            
-            <p><strong>2 -</strong> Após baixar os dados .SRA, é necessário transformá-los para o formato <strong>FASTQ</strong>. Para isso, use o seguinte comando (para dados paired-end):</p>
-            <div class="code-container">
-              <button class="copy-btn" onclick="copyCode(this)">📋</button>
-              <pre><code>/CAMINHO/PARA/O/EXECUTÁVEL/fastq-dump --splites-files --progress --outdir /CAMINHO/DE/SAIDA/DOS/ARQUIVOS/GERADOS/</code></pre>
-              <p># Caso suas amostras sejam single-end não use o parâmetro "--splites-files"</p>
-            </div>
-
-            <p><strong>💡 Dica:</strong> Faça pastas separadas para armazenar os outputs de passo da pipeline!</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Prática 4 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade4"
-                  aria-expanded="false" aria-controls="collapseAtividade4">
-            Atividade 4 — Controle de Qualidade
-          </button>
-        </h2>
-        <div id="collapseAtividade4" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Realizar e analisar o controle de qualidade das amostras baixadas no passo anterior.</p>
-            <p><strong>Tarefa:</strong> </p>
-            <p><strong>1 - </strong>Tendo os arquivos FASTQ das amostras selecionadas, utilizaremos a ferramenta FastQC, para gerar os relatórios de controle de qualidade, executando o seguinte comando:</p>
-            <div class="code-container">
-              <button class="copy-btn" onclick="copyCode(this)">📋</button>
-              <pre><code>fastqc amostra_A_R1.fastq.gz amostra_A_R2.fastq.gz amostra_B_R1.fastq.gz amostra_B_R2.fastq.gz</code></pre>
-            </div><br>
-
-            <p><strong>2 -</strong> Após realizar o controle de qualidade com a ferramenta FastQC, utilizaremos a ferramenta MultiQC para integrar os resultados de todas as amostras em somente um gráfico. Para isso, execute o seguinte comando:</p>
-            <div class="code-container">
-              <button class="copy-btn" onclick="copyCode(this)">📋</button>
-              <pre><code>multiqc .</code></pre>
-              <p># Vá para o diretório que contém os arquivos que você deseja analisar com o MultiQC.<br>
-              # A entrada serão os arquivos gerados pelo FastQC ".fastq.gz"</p>
-            </div><br>
-
-            <p><strong>3 -</strong> Analise os resultados obtidos, com auxilio do material teórico na aba "Desenvolvimento", módulo "4 - Controle de Qualidade".</p>
-
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Prática 5 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade5"
-                  aria-expanded="false" aria-controls="collapseAtividade5">
-            Atividade 5 — Trimagem
-          </button>
-        </h2>
-        <div id="collapseAtividade5" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Efetuar a remoção dos adaptadores e o corte das bases de baixa qualidade, se necessário.</p>
-            <p><strong>Tarefa:</strong> </p>
-            <p><strong>1 - </strong>Após revisar os resultados do passo anterior, verifique se é necessário executar a trimagem para remover adaptadores e bases de baixa qualidade. Caso necessário, execute esse coomando no terminal do servidor:</p>
-            <div class="code-container">
-              <button class="copy-btn" onclick="copyCode(this)">📋</button>
-              <pre><code>/CAMINHO/PARA/O/EXECUTÁVEL/trim_galore -j 24 -q 10 --phred33 --length 35 --paired --retain_unpaired -o /CAMINHO/PARA/OS/OUTPUTS/ amostra_A_R1.fastq.gz amostra_A_R2.fastq.gz</code></pre>
-              <p># Significado Parâmetros:</p>
-              <p># -j: Define o número de núcleos (cores) de CPU a serem usados.</p>
-              <p># -q: Define o limiar mínimo de qualidade Phred. No caso, bases no final de uma leitura com qualidade inferior a 10 serão removidas.</p>
-              <p># --phred: Especifica o formato de codificação da qualidade das bases.</p>
-              <p># --length: Define o comprimento mínimo que uma leitura deve ter após a trimagem para ser mantida.</p>
-              <p># --paired: Informa ao programa que os dados de entrada são paired-end.</p>
-              <p># --retain_unpaired: Mantém leituras cujo par foi descartado em arquivos separados.</p>
-            </div><br>
-
-            <p><strong>2 -</strong> Caso suas amostras tenham sido trimadas, repita a atividade 4. O objetivo é garantir que a qualidade dos dados é adequada para dar continuidade à análise.</p>
-          </div>
-        </div>
-      </div>
-
-            <!-- Prática 6 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade6"
-                  aria-expanded="false" aria-controls="collapseAtividade6">
-            Atividade 6 — Alinhamento
-          </button>
-        </h2>
-        <div id="collapseAtividade6" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Determinar a localização de origem de cada sequência curta (read) em um genoma de referência.</p>
-            <p><strong>Tarefa:</strong> </p>
-            <p><strong>1 - </strong>Após confirmar a qualidade das amostras, iremos realizar a etapa de alinhamento com o genoma de referência. Para isso, execute o seguinte comando:</p>
-            <div class="code-container">
-              <button class="copy-btn" onclick="copyCode(this)">📋</button>
-              <pre><code>bwa mem -M -t 24 [/CAMINHO/PARA/O/GENOMA/DE/REFERENCIA/arquivo.fa] [leitura_R1.fastq.gz] [leitura_R2.fastq.gz] > [/CAMINHO/PARA/SAIDA/DOS/OUTPUTS/arquivo_alinhado.sam] </code></pre>
-              <p># Significado Parâmetros:</p>
-              <p># -t: Define quantos núcleos de CPU (threads) usar.</p>
-              <P># -M: Marca alinhamentos extras como Secundários, evitando possíveis problemas futuros com as próximas ferramentas.</P>
-            </div><br>
-
-            <p><strong>2 - </strong>A ferramenta de alinhamento BWA gera saídas no formato SAM. No entanto, para as etapas subsequentes da análise, é necessária a conversão desses arquivos para o formato BAM. Para isso, execute o seguinte comando:</p>
-            <div class="code-container">
-              <button class="copy-btn" onclick="copyCode(this)">📋</button>
-              <pre>
-                <p># Converter o arquivo SAM para BAM</p><code>samtools view -Sb [/CAMINHO/AMOSTRA/SAM/amostra.sam] > [/CAMINHO/PARA/ARQUIVO/SAIDA/amostra.bam]<br>
-                <p># Ordenar o arquivo BAM</p>samtools sort -@ 24 -o [/CAMINHO/PARA/OUTPUTS/amostra.sorted.bam] [/CAMINHO/PARA/OS/ARQUIVOS/GERADOS/ANTERIORMENTE/amostra.bam]</code>
-              </pre>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <!-- Prática 7 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade7"
-                  aria-expanded="false" aria-controls="collapseAtividade7">
-            Atividade 7 — Boas Práticas GATK
-          </button>
-        </h2>
-        <div id="collapseAtividade7" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Efetuar etapas para que garantem a qualidade das amostras.</p>
-            <p><strong>Tarefa:</strong> </p>
-            <p><strong>1 - </strong>Primeiramente, iremos marcar as duplicatas com a ferramenta "Picard", usando o seguinte script: </p>
-            
-        <div class="code-container">
-        <button class="copy-btn" onclick="copyCode(this)">📋</button>
-                    <pre><code id="code-block" class="language-bash"><span class="keyword">#!/bin/bash</span>
-
-<span class="comment"># --- Configure seus caminhos aqui ---</span>
-<span class="variable">INPUT_DIR</span>=<span class="string">"/caminho/para/seus/bams"</span>
-<span class="variable">OUTPUT_DIR</span>=<span class="string">"/caminho/para/salvar/resultados"</span>
-<span class="variable">PICARD_JAR</span>=<span class="string">"/caminho/para/seu/picard.jar"</span>
-<span class="variable">MEMORY</span>=<span class="string">"30g"</span>
-<span class="comment"># --- Fim da configuração ---</span>
-
-<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="string">"$INPUT_DIR"</span>/*.bam; <span class="keyword">do</span>
-    <span class="variable">base</span>=<span class="operator">$(</span><span class="command">basename</span> <span class="string">"$i"</span><span class="operator">)</span>
-    <span class="variable">prefix</span>=<span class="string">"${base%%.bam}"</span>
-    <span class="variable">out</span>=<span class="string">"${OUTPUT_DIR}/${prefix}.rmdup.bam"</span>
-    <span class="variable">met</span>=<span class="string">"${OUTPUT_DIR}/${prefix}.metrics"</span>
-    <span class="command">java</span> -Xmx<span class="string">"$MEMORY"</span> -jar <span class="string">"$PICARD_JAR"</span> MarkDuplicates METRICS_FILE=<span class="string">"$met"</span> I=<span class="string">"$i"</span> O=<span class="string">"$out"</span>
-<span class="keyword">done</span>
-</code></pre>
-        </div><br>
-        <p><strong>💡 Importante!</strong> Configure as variáveis: edite a seção de configuração no topo do script para apontar para os diretórios e arquivos corretos do seu projeto.</p><br>
-
-          <p><strong>2 - </strong>Agora, iremos recalibrar a qualidade de bases com "GATK BaseRecalibrator", usando o seguinte script: </p>
-          <div class="code-container">
-          <button class="copy-btn" onclick="copyCode(this)">📋</button>
-<pre><code><span class="comment">#!/bin/bash</span>
-
-<span class="comment"># ===================================================================</span>
-<span class="comment"># 1. DEFINIÇÃO DE VARIÁVEIS E CAMINHOS</span>
-<span class="comment"># Altere os caminhos abaixo para corresponder à sua estrutura de diretórios.</span>
-<span class="comment"># ===================================================================</span>
-
-<span class="comment"># Diretório contendo os arquivos BAM de entrada (pós-marcação de duplicatas)</span>
-<span class="variable">DIR_DUPLICATAS</span>=<b>'/CAMINHO/PARA/ARQUIVOS/BAM/DE/ENTRADA/'</b>
-
-<span class="comment"># Diretório onde os arquivos de saída (tabela de recalibração e BAM recalibrado) serão salvos</span>
-<span class="variable">DIR_OUTPUT</span>=<b>'/CAMINHO/PARA/DIRETORIO/DE/SAIDA/'</b>
-
-<span class="comment"># Arquivo do genoma de referência em formato FASTA</span>
-<span class="variable">REFHG38</span>=<b>'/CAMINHO/PARA/GENOMA/DE/REFERENCIA/hg38.fa'</b>
-
-<span class="comment"># Arquivos de "known sites" (variantes conhecidas) para o GATK</span>
-<span class="variable">KNOWIND</span>=<b>'/CAMINHO/PARA/ARQUIVOS/VCF/Homo_sapiens_assembly38.known_indels.vcf.gz'</b>
-<span class="variable">KNOWSNP</span>=<b>'/CAMINHO/PARA/ARQUIVOS/VCF/Homo_sapiens_assembly38.dbsnp138.vcf.gz'</b>
-<span class="variable">KNOWMIND</span>=<b>'/CAMINHO/PARA/ARQUIVOS/VCF/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz'</b>
-
-<span class="comment"># ===================================================================</span>
-<span class="comment"># 2. PREPARAÇÃO DO AMBIENTE</span>
-<span class="comment"># ===================================================================</span>
-
-<span class="comment"># Cria o diretório de saída se ele ainda não existir</span>
-<span class="command">mkdir</span> -p ${<span class="variable">DIR_OUTPUT</span>}
-
-<span class="comment"># Navega para o diretório com os arquivos de entrada para simplificar os loops</span>
-<span class="command">cd</span> ${<span class="variable">DIR_DUPLICATAS</span>}
-
-<span class="comment"># ===================================================================</span>
-<span class="comment"># ETAPA 1: Gerar a tabela de recalibração com BaseRecalibrator</span>
-<span class="comment"># ===================================================================</span>
-echo "Iniciando a etapa 1: BaseRecalibrator..."
-
-<span class="comment"># O loop identifica o prefixo de cada amostra a partir dos arquivos *.rmdup.bam</span>
-<span class="command">for</span> i in $(ls -1 rmdup.bam | sed 's/.rmdup.bam//'); <span class="command">do</span>
-  echo "Processando amostra: ${i}"
-  <span class="command">gatk</span> --java-options "-Xmx60G -XX:ParallelGCThreads=24" BaseRecalibrator
-    -I ${i}.rmdup.bam
-    -R ${<span class="variable">REFHG38</span>}
-    --known-sites ${<span class="variable">KNOWIND</span>}
-    --known-sites ${<span class="variable">KNOWSNP</span>}
-    --known-sites ${<span class="variable">KNOWMIND</span>}
-    -O ${<span class="variable">DIR_OUTPUT</span>}/${i}.recal_data.table;
-<span class="command">done</span>
-
-echo "Etapa 1 concluída."
-
-<span class="comment"># ===================================================================</span>
-<span class="comment"># ETAPA 2: Aplicar a recalibração nos arquivos BAM com ApplyBQSR</span>
-<span class="comment"># ===================================================================</span>
-echo "Iniciando a etapa 2: ApplyBQSR..."
-
-<span class="command">for</span> i in $(ls -1 rmdup.bam | sed 's/.rmdup.bam//'); <span class="command">do</span>
-  echo "Aplicando BQSR na amostra: ${i}"
-  <span class="command">gatk</span> --java-options "-Xmx60G -XX:ParallelGCThreads=24" ApplyBQSR
-    -R ${<span class="variable">REFHG38</span>}
-    -I ${i}.rmdup.bam
-    --bqsr-recal-file ${<span class="variable">DIR_OUTPUT</span>}${i}.recal_data.table
-    -O ${<span class="variable">DIR_OUTPUT</span>}/${i}.recal.bam;
-<span class="command">done</span>
-
-echo "Processo de recalibração finalizado com sucesso!"
-</code></pre><br>
-          </div><br>
-            <p><strong>💡 Importante!</strong> Configure as variáveis: edite a seção de configuração no topo do script para apontar para os diretórios e arquivos corretos do seu projeto.</p>
-          </div>
-        </div>
-      </div>
-
-          <!-- Prática 8 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade8"
-                  aria-expanded="false" aria-controls="collapseAtividade8">
-            Atividade 8 — Chamada de Variantes
-          </button>
-        </h2>
-        <div id="collapseAtividade8" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Realizar a detecção e genotipagem de variantes genéticas (SNPs e indels) a partir dos arquivos em formato BAM, identificando diferenças entre as sequências do genoma amostrado e o genoma de referência.</p>
-            <p><strong>Tarefa:</strong> </p>
-            <p><strong>1 - </strong>Utilizando a ferramenta GATK HaplotypeCaller, será realizada a etapa de chamada de variantes, conforme o script apresentado a seguir:</p>
-            <div class="code-container">
-              <button class="copy-btn" onclick="copyCode(this)">📋</button>
-              <pre><code>
-<span class="comment"># --- CONFIGURAÇÃO: EDITE AS VARIÁVEIS ABAIXO ---</span>
-<span class="comment"># ⚙️ Modifique estas variáveis para se adequarem ao seu projeto.</span>
-<span class="comment"># 1. Arquivos de Referência</span>
-<span class="variable">REFERENCE_GENOME</span>=<span class="string">"/caminho/para/seu/genoma_referencia.fasta"</span>
-<span class="comment"># 2. Diretório contendo os arquivos BAM recalibrados (saída do ApplyBQSR).</span>
-<span class="variable">INPUT_BAM_DIR</span>=<span class="string">"/caminho/para/seus/bams_recalibrados"</span>
-<span class="comment"># 3. Diretório principal onde todos os resultados serão salvos.</span>
-<span class="variable">OUTPUT_DIR</span>=<span class="string">"/caminho/para/salvar/os/resultados_finais"</span>
-<span class="comment"># 4. Memória a ser alocada para o Java (ex: 100g para 100 gigabytes).</span>
-<span class="variable">MEMORY</span>=<span class="string">"100g"</span>
-<span class="comment"># --- FIM DA CONFIGURAÇÃO ---</span>
-
-
-<span class="comment"># --- LÓGICA DO SCRIPT (NÃO PRECISA EDITAR) ---</span>
-
-<span class="comment"># Garante que o script pare se algum comando falhar.</span>
-<span class="keyword">set</span> -e
-
-<span class="comment"># Define os nomes dos subdiretórios de saída</span>
-<span class="variable">VARCALL_DIR</span>=<span class="string">"${OUTPUT_DIR}/1_variant_calling_gvcfs"</span>
-<span class="variable">FILTERED_DIR</span>=<span class="string">"${OUTPUT_DIR}/2_vcf_filtered"</span>
-<span class="variable">FINAL_DIR</span>=<span class="string">"${OUTPUT_DIR}/3_vcf_final"</span>
-
-<span class="keyword">echo</span> <span class="string">">>> Criando diretórios de saída..."</span>
-<span class="command">mkdir</span> -p <span class="string">"$VARCALL_DIR"</span> <span class="string">"$FILTERED_DIR"</span> <span class="string">"$FINAL_DIR"</span>
-
-<span class="comment"># --- PASSO 1: HaplotypeCaller (Modo GVCF) ---</span>
-<span class="keyword">echo</span> <span class="string">">>> PASSO 1: Executando HaplotypeCaller para cada amostra..."</span>
-<span class="keyword">for</span> <span class="variable">input_bam</span> <span class="keyword">in</span> <span class="string">"$INPUT_BAM_DIR"</span>/*.recal.bam; <span class="keyword">do</span>
-    <span class="variable">prefix</span>=<span class="string">$(</span><span class="command">basename</span> <span class="string">"${input_bam}"</span> .recal.bam<span class="string">)</span>
-    <span class="keyword">echo</span> <span class="string">"--> Processando amostra: $prefix"</span>
-    
-    <span class="command">gatk</span> --java-options <span class="string">"-Xmx${MEMORY}"</span> HaplotypeCaller \
-        <span class="flag">-R</span> <span class="string">"$REFERENCE_GENOME"</span> \
-        <span class="flag">-I</span> <span class="string">"$input_bam"</span> \
-        <span class="flag">-O</span> <span class="string">"${VARCALL_DIR}/${prefix}.g.vcf.gz"</span> \
-        <span class="flag">-ERC</span> GVCF
-    <span class="keyword">done</span>
-
-<span class="comment"># --- PASSO 2: GenotypeGVCFs (Combinar amostras) ---</span>
-<span class="keyword">echo</span> <span class="string">">>> PASSO 2: Combinando GVCFs com GenotypeGVCFs..."</span>
-<span class="command">gatk</span> --java-options <span class="string">"-Xmx${MEMORY}"</span> GenotypeGVCFs \
-    <span class="flag">-R</span> <span class="string">"$REFERENCE_GENOME"</span> \
-    <span class="string">"${VARCALL_DIR}/*.g.vcf.gz"</span> \
-    <span class="flag">-O</span> <span class="string">"${FILTERED_DIR}/cohort_genotyped.vcf.gz"</span>
-
-<span class="comment"># --- PASSO 3: VariantFiltration ---</span>
-<span class="keyword">echo</span> <span class="string">">>> PASSO 3: Aplicando filtros de qualidade (VariantFiltration)..."</span>
-<span class="command">gatk</span> --java-options <span class="string">"-Xmx${MEMORY}"</span> VariantFiltration \
-    <span class="flag">-R</span> <span class="string">"$REFERENCE_GENOME"</span> \
-    <span class="flag">-V</span> <span class="string">"${FILTERED_DIR}/cohort_genotyped.vcf.gz"</span> \
-    <span class="flag">-O</span> <span class="string">"${FILTERED_DIR}/cohort_genotyped_filtered.vcf.gz"</span> \
-    <span class="flag">--filter-expression</span> <span class="string">"QD < 2.0"</span> <span class="flag">--filter-name</span> <span class="string">"QD2"</span> \
-    <span class="flag">--filter-expression</span> <span class="string">"FS > 60.0"</span> <span class="flag">--filter-name</span> <span class="string">"FS60"</span> \
-    <span class="flag">--filter-expression</span> <span class="string">"MQ < 40.0"</span> <span class="flag">--filter-name</span> <span class="string">"MQ40"</span> \
-    <span class="flag">--filter-expression</span> <span class="string">"SOR > 5.0"</span> <span class="flag">--filter-name</span> <span class="string">"SOR5"</span> \
-    <span class="flag">--filter-expression</span> <span class="string">"MQRankSum < -12.5"</span> <span class="flag">--filter-name</span> <span class="string">"MQRankSum-12.5"</span> \
-    <span class="flag">--filter-expression</span> <span class="string">"ReadPosRankSum < -8.0"</span> <span class="flag">--filter-name</span> <span class="string">"ReadPosRankSum-8"</span>
-
-<span class="comment"># --- PASSO 4: SelectVariants (Manter apenas variantes PASS) ---</span>
-<span class="keyword">echo</span> <span class="string">">>> PASSO 4: Selecionando apenas variantes que passaram nos filtros..."</span>
-<span class="command">gatk</span> --java-options <span class="string">"-Xmx${MEMORY}"</span> SelectVariants \
-    <span class="flag">-R</span> <span class="string">"$REFERENCE_GENOME"</span> \
-    <span class="flag">-V</span> <span class="string">"${FILTERED_DIR}/cohort_genotyped_filtered.vcf.gz"</span> \
-    <span class="flag">-O</span> <span class="string">"${FINAL_DIR}/cohort_final_PASS.vcf.gz"</span> \
-    <span class="flag">--exclude-filtered</span>
-
-<span class="keyword">echo</span> <span class="string">"Chamada de variantes concluído! O VCF final está em: ${FINAL_DIR}/cohort_final_PASS.vcf.gz"</span>
-</code></pre>
-        </div><br>
-        <p><strong>💡 Importante!</strong> Configure as variáveis: edite a seção de configuração no topo do script para apontar para os diretórios e arquivos corretos do seu projeto.</p>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Prática 9 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade9"
-                  aria-expanded="false" aria-controls="collapseAtividade9">
-            Atividade 9 — Anotação das Variantes
-          </button>
-        </h2>
-        <div id="collapseAtividade9" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Realizar a anotação funcional das variantes</p>
-            <p><strong>Tarefa:</strong> </p>
-            <p><strong>1 - </strong>Utilizando as ferramentas SnpEff e SnpSift, realizaremos a anotação funcional das variantes. Para isso, execute o script a seguir:</p>
-            <div class="code-container">
-              <button class="copy-btn" onclick="copyCode(this)">📋</button>
-              <pre><code>
-<span class="comment"># --- CONFIGURAÇÃO: EDITE AS VARIÁVEIS ABAIXO ---</span>
-<span class="comment"># ⚙️ Modifique estas variáveis para se adequarem ao seu ambiente e projeto.</span>
-
-<span class="comment"># 1. Caminhos para as ferramentas</span>
-<span class="variable">SNPEFF_JAR</span>=<span class="string">'/caminho/para/share/snpeff-5.2-1/snpEff.jar'</span>
-<span class="variable">SNPSIFT_JAR</span>=<span class="string">'/caminho/para/share/snpsift-5.2-0/SnpSift.jar'</span>
-<span class="variable">SNPEFF_CONFIG</span>=<span class="string">'/caminho/para/share/snpeff-5.2-1/snpEff.config'</span>
-<span class="variable">VCF_EFF_ONE_PER_LINE_PL</span>=<span class="string">'/caminho/para/share/snpeff-5.2-1/scripts/vcfEffOnePerLine.pl'</span>
-
-<span class="comment"># 2. Configurações de execução</span>
-<span class="variable">MEMORY</span>=<span class="string">'-Xmx32g'</span>
-<span class="variable">GENOME_VERSION</span>=<span class="string">'hg38'</span> <span class="comment"># Versão do genoma para SnpEff</span>
-<span class="variable">FILTER_PASS_VALUE</span>=1 <span class="comment"># Valor para substituir 'PASS' no final</span>
-
-<span class="comment"># 3. Caminhos para as bases de dados</span>
-<span class="variable">DB_CLINVAR</span>=<span class="string">'/caminho/para/db/clinvar.vcf.gz'</span>
-<span class="variable">DB_CLINVAR_COMMON</span>=<span class="string">'/caminho/para/db/common_and_clinical.vcf.gz'</span>
-<span class="variable">DB_SPLICEAI</span>=<span class="string">'/caminho/para/db/spliceai_scores.vcf.gz'</span>
-<span class="variable">DB_NSFP</span>=<span class="string">'/caminho/para/db/dbNSFP_database.txt.gz'</span>
-
-<span class="comment"># 4. Caminhos de entrada e saída</span>
-<span class="variable">INPUT_VCF_DIR</span>=<span class="string">'/caminho/para/vcf_final/'</span>
-<span class="variable">SAMPLE_NAME</span>=<span class="string">'cohort_genotyped_filtered_PASS'</span> <span class="comment"># Prefixo do arquivo VCF de entrada</span>
-<span class="variable">OUTPUT_ANN_DIR</span>=<span class="string">'/caminho/para/salvar/anotacoes/'</span>
-
-<span class="comment"># --- FIM DA CONFIGURAÇÃO ---</span>
-
-
-<span class="comment"># --- LÓGICA DO SCRIPT ORIGINAL (SEM ALTERAÇÕES) ---</span>
-
-<span class="keyword">echo</span> <span class="string">"Criando diretório de saída para anotações..."</span>
-<span class="command">mkdir</span> -p <span class="string">"$OUTPUT_ANN_DIR"</span>
-
-<span class="keyword">echo</span> <span class="string">"Iniciando anotação com SnpEff..."</span>
-<span class="command">java</span> <span class="string">"$MEMORY"</span> -jar <span class="string">"$SNPEFF_JAR"</span> -c <span class="string">"$SNPEFF_CONFIG"</span> -v <span class="string">"$GENOME_VERSION"</span> <span class="string">"${INPUT_VCF_DIR}/${SAMPLE_NAME}.vcf.gz"</span> > <span class="string">"${OUTPUT_ANN_DIR}/${SAMPLE_NAME}.snpeff.vcf"</span>
-
-<span class="keyword">echo</span> <span class="string">"Iniciando pipeline de pós-processamento e anotação com SnpSift..."</span>
-<span class="variable">snpeff_vcf</span>=<span class="string">"${OUTPUT_ANN_DIR}/${SAMPLE_NAME}.snpeff.vcf"</span>
-
-<span class="command">java</span> <span class="string">"$MEMORY"</span> -jar <span class="string">"$SNPSIFT_JAR"</span> filter <span class="string">"FILTER == 'PASS'"</span> <span class="string">"$snpeff_vcf"</span> \
-    | <span class="command">java</span> <span class="string">"$MEMORY"</span> -jar <span class="string">"$SNPEFF_JAR"</span> -canon -c <span class="string">"$SNPEFF_CONFIG"</span> -v <span class="string">"$GENOME_VERSION"</span> - \
-    | <span class="command">java</span> <span class="string">"$MEMORY"</span> -jar <span class="string">"$SNPSIFT_JAR"</span> dbnsfp -v -db <span class="string">"$DB_NSFP"</span> \
-        -f <span class="string">"fathmm-MKL_coding_score,fathmm-MKL_coding_rankscore,FATHMM_score,FATHMM_converted_rankscore,VEST4_score,VEST4_rankscore,CADD_phred,SIFT_converted_rankscore,Polyphen2_HVAR_rankscore"</span> - \
-    | <span class="command">java</span> <span class="string">"$MEMORY"</span> -jar <span class="string">"$SNPSIFT_JAR"</span> annotate <span class="string">"$DB_CLINVAR"</span> - \
-    | <span class="command">java</span> <span class="string">"$MEMORY"</span> -jar <span class="string">"$SNPSIFT_JAR"</span> annotate <span class="string">"$DB_CLINVAR_COMMON"</span> - \
-    | <span class="command">java</span> <span class="string">"$MEMORY"</span> -jar <span class="string">"$SNPSIFT_JAR"</span> annotate <span class="string">"$DB_SPLICEAI"</span> - \
-    | <span class="command">perl</span> <span class="string">"$VCF_EFF_ONE_PER_LINE_PL"</span> \
-    | <span class="command">sed</span> -e <span class="string">"s/\"PASS\"/$FILTER_PASS_VALUE/"</span> > <span class="string">"${OUTPUT_ANN_DIR}/cohort_annotated_final.vcf"</span>
-
-<span class="keyword">echo</span> <span class="string">"Processo de anotação concluído!"</span>
-</code></pre>
-            </div><br>
-            <p><strong>💡 Importante!</strong> Configure as variáveis: edite a seção de configuração no topo do script para apontar para os diretórios e arquivos corretos do seu projeto.</p><br>
-          <p><strong>2 - </strong>Após realizar a anotação, devemos separar as amostras em arquivos separados. Para isso, execute o script a seguir:</p>
-          <div class="code-container">
-          <button class="copy-btn" onclick="copyCode(this)">📋</button>
-          <pre><code>
-<span class="comment"># --- CONFIGURAÇÃO: EDITE AS VARIÁVEIS ABAIXO ---</span>
-<span class="comment"># ⚙️ Modifique estas variáveis para se adequarem ao seu projeto.</span>
-
-<span class="comment"># 1. Caminho para o arquivo VCF de entrada com múltiplas amostras.</span>
-<span class="variable">INPUT_VCF</span>=<span class="string">"/caminho/para/seu/arquivo_multi_amostra.vcf.gz"</span>
-
-<span class="comment"># 2. Diretório onde os VCFs individuais serão salvos.</span>
-<span class="variable">OUTPUT_DIR</span>=<span class="string">"/caminho/para/salvar/os/vcfs_individuais"</span>
-
-<span class="comment"># --- FIM DA CONFIGURAÇÃO ---</span>
-
-
-<span class="comment"># --- LÓGICA DO SCRIPT (NÃO PRECISA EDITAR) ---</span>
-
-<span class="comment"># Garante que o script pare se algum comando falhar.</span>
-<span class="keyword">set</span> -e
-
-<span class="keyword">echo</span> <span class="string">">>> Iniciando a separação do VCF por amostra..."</span>
-
-<span class="comment"># Cria o diretório de saída, se ele não existir.</span>
-<span class="command">mkdir</span> -p <span class="string">"$OUTPUT_DIR"</span>
-
-<span class="comment"># Loop para processar cada amostra encontrada no cabeçalho do VCF.</span>
-<span class="keyword">for</span> <span class="variable">sample</span> <span class="keyword">in</span> <span class="operator">$(</span><span class="command">bcftools</span> query -l <span class="string">"$INPUT_VCF"</span><span class="operator">)</span>; <span class="keyword">do</span>
-    
-    <span class="keyword">echo</span> <span class="string">"--> Extraindo amostra: $sample"</span>
-    
-    <span class="comment"># Define o nome do arquivo de saída para a amostra atual.</span>
-    <span class="variable">output_vcf</span>=<span class="string">"${OUTPUT_DIR}/${sample}_annotated.vcf"</span>
-    
-    <span class="comment"># Usa bcftools para criar um VCF contendo apenas a amostra atual.</span>
-    <span class="command">bcftools</span> view -c 1 -s <span class="string">"$sample"</span> -o <span class="string">"$output_vcf"</span> <span class="string">"$INPUT_VCF"</span>
-    
-<span class="keyword">done</span>
-
-<span class="keyword">echo</span> <span class="string">"✅ Processo concluído! Os VCFs individuais foram salvos em: $OUTPUT_DIR"</span>
-          </code></pre>
-          </div><br>         
-            
-          <p><strong>3 - </strong>Agora, temos os arquivos vcf anotados, com todas as informações para fazermos as análises. Porém alguns pacotes necessitam de formatos diferentes de arquivo, como o maftools. Caso você queira utilizar esse pacote, execute o script a seguir ainda no terminal do servidor:</p>
-          <div class="code-container">
-          <button class="copy-btn" onclick="copyCode(this)">📋</button>
-          <pre><code>
-<span class="comment">#!/bin/bash</span>
-
-<span class="comment"># ===================================================================</span>
-<span class="comment"># 1. DEFINIÇÃO DE VARIÁVEIS E CAMINHOS</span>
-<span class="comment"># Configure os caminhos para as ferramentas e arquivos de referência.</span>
-<span class="comment"># ===================================================================</span>
-
-<span class="comment"># Caminho para o genoma de referência em formato FASTA</span>
-<span class="variable">FASTA</span>=<b>'/CAMINHO/PARA/SEU/GENOMA_DE_REFERENCIA.fasta'</b>
-
-<span class="comment"># Caminho para a pasta 'bin' da sua instalação do VEP (Variant Effect Predictor)</span>
-<span class="variable">VEP_PATH</span>=<b>'/CAMINHO/PARA/INSTALACAO/VEP/bin/'</b>
-
-<span class="comment"># Caminho para o diretório de dados/cache do VEP</span>
-<span class="variable">VEP_DATA</span>=<b>'/CAMINHO/PARA/DADOS_CACHE/VEP/'</b>
-
-<span class="comment"># Versão do cache do VEP que será utilizada</span>
-<span class="variable">VEP_VERSION</span>=112
-
-<span class="comment"># Diretório contendo os arquivos VCF de entrada que serão convertidos</span>
-<span class="variable">DIR_ENTRADA_VCF</span>=<b>'/CAMINHO/PARA/SEUS/VCFs/DE/ENTRADA/'</b>
-
-<span class="comment"># Diretório onde os arquivos MAF resultantes serão salvos</span>
-<span class="variable">DIR_SAIDA_MAF</span>=<b>'/CAMINHO/PARA/O/DIRETORIO/DE/SAIDA_MAF/'</b>
-
-
-<span class="comment"># ===================================================================</span>
-<span class="comment"># 2. PREPARAÇÃO DO AMBIENTE</span>
-<span class="comment"># ===================================================================</span>
-
-<span class="comment"># Cria o diretório de saída se ele ainda não existir</span>
-<span class="command">mkdir</span> -p ${<span class="variable">DIR_SAIDA_MAF</span>}
-
-<span class="comment"># Navega para o diretório com os arquivos VCF de entrada</span>
-<span class="command">cd</span> ${<span class="variable">DIR_ENTRADA_VCF</span>}
-
-
-<span class="comment"># ===================================================================</span>
-<span class="comment"># 3. EXECUÇÃO DA CONVERSÃO</span>
-<span class="comment"># ===================================================================</span>
-
-echo <span class="string">"Iniciando a conversão de VCF para MAF..."</span>
-
-<span class="comment"># O loop itera sobre todos os arquivos que terminam com '_annotated_final.vcf'.</span>
-<span class="comment"># Altere o padrão "*.vcf" se seus arquivos tiverem outro nome.</span>
-<span class="command">for</span> i in *_annotated_final.vcf; <span class="command">do</span>
-    echo <span class="string">"--------------------------------------------------"</span>
-    echo <span class="string">"Processando arquivo: $i"</span>
-
-    <span class="comment"># Extrai o nome da amostra a partir do nome do arquivo</span>
-    <span class="variable">SAMPLE_NAME</span>=$(basename <span class="string">"$i"</span> | cut -d'.' -f1)
-    <span class="variable">MAF_OUTPUT</span>=<span class="string">"${SAMPLE_NAME}.maf"</span>
-
-    <span class="comment"># Este bloco extrai dinamicamente todos os campos INFO e FORMAT do VCF.</span>
-    <span class="comment"># Isso garante que todas as anotações presentes no VCF sejam mantidas no MAF final.</span>
-    <span class="variable">fields</span>=$( \
-        { \
-            grep -oP <span class="string">'^##INFO=&lt;ID=\K[^,]+'</span> <span class="string">"$i"</span>; \
-            grep -m1 -v <span class="string">'^#'</span> <span class="string">"$i"</span> | cut -f9 | tr ':' <span class="string">'\n'</span>; \
-        } | uniq | paste -sd "," - \
-    )
-
-    <span class="comment"># Executa o script vcf2maf.pl</span>
-    <span class="command">vcf2maf.pl</span> --input-vcf $i \
-        --output-maf ${<span class="variable">DIR_SAIDA_MAF</span>}/${<span class="variable">MAF_OUTPUT</span>} \
-        --ncbi-build GRCh38 \
-        --ref-fasta ${<span class="variable">FASTA</span>} \
-        --vep-path ${<span class="variable">VEP_PATH</span>} \
-        --vep-data ${<span class="variable">VEP_DATA</span>} \
-        --cache-version ${<span class="variable">VEP_VERSION</span>} \
-        --vep-forks 12 \
-        --tumor-id ${<span class="variable">SAMPLE_NAME</span>} \
-        --vcf-tumor-id ${<span class="variable">SAMPLE_NAME</span>} \
-        --retain-info ${<span class="variable">fields</span>}
-
-    echo <span class="string">"Arquivo ${MAF_OUTPUT} gerado com sucesso em ${DIR_SAIDA_MAF}"</span>
-<span class="command">done</span>
-
-echo <span class="string">"--------------------------------------------------"</span>
-echo <span class="string">"Conversão concluída!"</span>
-          </code></pre>
-          </div>
-          </div>
-        </div>
-      </div>
-
-      
-      <!-- Prática 10 -->
-      <div class="accordion-item border-0 shadow-sm rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button fw-semibold collapsed" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#collapseAtividade10"
-                  aria-expanded="false" aria-controls="collapseAtividade10">
-            Atividade 10 — Análises
-          </button>
-        </h2>
-        <div id="collapseAtividade10" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
-          <div class="accordion-body">
-            <p><strong>Objetivo:</strong> Realizar análises com os dados processados.</p><br>
-            <p><strong>Tarefa:</strong> Explore o software <strong>R</strong> e seus pacotes para realizar análises com os dados. Por exemplo, o pacote <a href="https://www.bioconductor.org/packages/release/bioc/html/maftools.html" target="_blank" rel="noopener"> maftools</a>
-permite gerar <a href="https://bioconductor.org/packages/release/bioc/vignettes/maftools/inst/doc/oncoplots.html"> <strong>oncoplots</strong></a> e outras visualizações genômicas.</p>
-            <p><strong>⚠️ Agora utilize o software R!!</strong></p>
-            <div class="code-container">
-            <button class="copy-btn" onclick="copyCode(this)">📋</button>
-            <pre><code>
-<span class="comment"># --- INSTALAÇÃO (executar apenas uma vez) ---</span>
-<span class="comment"># if (!require("BiocManager", quietly = TRUE))</span>
-<span class="comment">#     install.packages("BiocManager")</span>
-<span class="comment"># BiocManager::install("maftools")</span>
-              
-<span class="function">library</span>(maftools)
-
-<span class="comment"># Caminho para o arquivo MAF do TCGA LAML</span>
-<span class="variable">laml.maf</span> = <span class="function">system.file</span>(<span class="string">'extdata'</span>, <span class="string">'tcga_laml.maf.gz'</span>, <span class="parameter">package</span> = <span class="string">'maftools'</span>)
-
-<span class="comment"># Informação clínica contendo dados de sobrevida e histologia. Este passo é opcional.</span>
-<span class="variable">laml.clin</span> = <span class="function">system.file</span>(<span class="string">'extdata'</span>, <span class="string">'tcga_laml_annot.tsv'</span>, <span class="parameter">package</span> = <span class="string">'maftools'</span>)
-
-<span class="variable">laml</span> = <span class="function">read.maf</span>(<span class="parameter">maf</span> = laml.maf,
-                <span class="parameter">clinicalData</span> = laml.clin,
-                <span class="parameter">verbose</span> = FALSE)
-
-<span class="comment"># Por padrão, a função plota os 20 genes mais mutados</span>
-<span class="function">oncoplot</span>(<span class="parameter">maf</span> = laml, <span class="parameter">draw_titv</span> = TRUE)
-</code></pre>
-          </div><br>
-          <p><strong>💡 Dica:</strong> Consulte a documentação do pacote para conhecer os tipos de gráficos disponíveis e as opções de personalização.</p>
-                      
-        </div>
+    <!-- LOGIN USP -->
+    <div id="usp-gate">
+      <h2>🔒 Acesso restrito à USP</h2>
+      <p>Este conteúdo é exclusivo para a comunidade USP.<br>Faça login com sua conta institucional para continuar.</p>
+      <button class="btn-usp" onclick="loginUSP()">🎓 Entrar com conta USP</button>
+      <div class="usp-info">
+        <strong>Como funciona:</strong> você será redirecionado ao portal <code>oauth.usp.br</code>. Após o login com seu número USP e senha, voltará automaticamente a esta página.
       </div>
     </div>
+
+    <div id="usp-bar">
+      🎓 <span id="usp-nome"></span> &nbsp;·&nbsp;
+      <span id="usp-email" style="color:#555"></span>
+      <button onclick="logoutUSP()">Sair</button>
+    </div>
+
+    <!-- CONTEÚDO PROTEGIDO -->
+    <div id="conteudo">
+      <h1 class="fw-bold">Atividades</h1>
+      <p class="text-secondary mb-4">Selecione uma atividade abaixo para visualizar seu conteúdo.</p>
+
+      <div class="accordion" id="accordionAtividades">
+
+        <!-- Prática 0 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade0">
+              PREPARAÇÃO DOS AMBIENTES CONDA
+            </button>
+          </h2>
+          <div id="collapseAtividade0" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <h3>O que é ambiente conda?</h3>
+              <ul>
+                <li>Um ambiente Conda é um espaço isolado dentro do gerenciador de pacotes Conda (usado no Anaconda ou Miniconda) que permite instalar e gerenciar versões específicas de pacotes, bibliotecas e dependências sem interferir em outros projetos.</li>
+                <li>Uma boa prática é utilizar um ambiente conda para cada etapa no processamento dos dados.</li>
+              </ul>
+              <h3>Como usar?</h3>
+              <p><strong>1. Instalar Conda</strong></p>
+              <ul>
+                <li>Baixar e instalar <strong>Anaconda</strong> (completo) ou <strong>Miniconda</strong> (mais leve).</li>
+                <li>Verificar instalação:
+                  <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>conda --version</code></pre></div>
+                </li>
+              </ul>
+              <p><strong>2. Criar um ambiente</strong></p>
+              <ul>
+                <li>Criar ambiente com nome específico e versão do Python desejada:
+                  <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>conda create -n meu_ambiente python=3.11</code></pre></div>
+                </li>
+              </ul>
+              <p><strong>3. Ativar e desativar ambiente</strong></p>
+              <ul>
+                <li>Ativar ambiente:
+                  <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>conda activate meu_ambiente</code></pre></div>
+                </li><br>
+                <li>Desativar ambiente:
+                  <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>conda deactivate</code></pre></div>
+                </li>
+              </ul>
+              <p><strong>4. Instalar pacotes</strong></p>
+              <p>⚠️ Pesquise no Google o nome da ferramenta seguido de <code>conda install</code>. Certifique-se de instalar apenas com o ambiente ativo!</p>
+              <ul>
+                <li>Instalar pacotes:
+                  <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>conda install numpy pandas</code></pre></div>
+                </li><br>
+                <li>Instalar de canais específicos:
+                  <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>conda install -c conda-forge pacote</code></pre></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 1 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade1">
+              Atividade 1 — Definição do Problema
+            </button>
+          </h2>
+          <div id="collapseAtividade1" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Iniciar o desenvolvimento do projeto, identificando o que será investigado.</p>
+              <p><strong>Pergunta Norteadora:</strong> Quais genes estão relacionados ao desenvolvimento do câncer de mama hereditário?</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 2 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade2">
+              Atividade 2 — Busca na Literatura
+            </button>
+          </h2>
+          <div id="collapseAtividade2" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Realizar uma pesquisa bibliográfica sobre o tema do projeto.</p>
+              <p><strong>Tarefa:</strong></p>
+              <ol>
+                <li>Busque artigos e revisões recentes (últimos 5 anos) em: <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed</a>, <a href="https://www.scielo.org/" target="_blank">SciELO</a>, <a href="https://scholar.google.com/" target="_blank">Google Scholar</a></li>
+                <li>Elabore um parágrafo integrando os achados e explicando como justificam seu projeto.</li>
+              </ol>
+              <p><strong>💡 Dica:</strong> Busque estudos com metodologias semelhantes que disponibilizem dados em bancos públicos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 3 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade3">
+              Atividade 3 — Download dos Dados
+            </button>
+          </h2>
+          <div id="collapseAtividade3" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Baixar os dados necessários para o projeto.</p>
+              <p><strong>1 -</strong> Encontre o código <strong>SRA</strong> e execute:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>/CAMINHO/PARA/O/EXECUTÁVEL/prefetch SRRXXXXXX SRRYYYYYY SRRZZZZZZ</code></pre></div>
+              <p><strong>2 -</strong> Transforme os dados .SRA para <strong>FASTQ</strong> (paired-end):</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>/CAMINHO/PARA/O/EXECUTÁVEL/fastq-dump --splites-files --progress --outdir /CAMINHO/DE/SAIDA/
+# Caso single-end: não use --splites-files</code></pre></div>
+              <p><strong>💡 Dica:</strong> Faça pastas separadas para cada etapa da pipeline!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 4 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade4">
+              Atividade 4 — Controle de Qualidade
+            </button>
+          </h2>
+          <div id="collapseAtividade4" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Realizar o controle de qualidade das amostras.</p>
+              <p><strong>1 -</strong> FastQC:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>fastqc amostra_A_R1.fastq.gz amostra_A_R2.fastq.gz amostra_B_R1.fastq.gz amostra_B_R2.fastq.gz</code></pre></div>
+              <p><strong>2 -</strong> MultiQC:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>multiqc .
+# Vá para o diretório com os arquivos FastQC antes de executar</code></pre></div>
+              <p><strong>3 -</strong> Analise os resultados com o material teórico do módulo 4.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 5 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade5">
+              Atividade 5 — Trimagem
+            </button>
+          </h2>
+          <div id="collapseAtividade5" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Remoção de adaptadores e bases de baixa qualidade.</p>
+              <p><strong>1 -</strong> Trim Galore:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>/CAMINHO/PARA/O/EXECUTÁVEL/trim_galore -j 24 -q 10 --phred33 --length 35 --paired --retain_unpaired -o /CAMINHO/PARA/OS/OUTPUTS/ amostra_A_R1.fastq.gz amostra_A_R2.fastq.gz
+# -j: núcleos de CPU | -q: limiar de qualidade Phred | --length: tamanho mínimo</code></pre></div>
+              <p><strong>2 -</strong> Se trimou, repita a Atividade 4 para confirmar a qualidade.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 6 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade6">
+              Atividade 6 — Alinhamento
+            </button>
+          </h2>
+          <div id="collapseAtividade6" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Mapear as leituras contra o genoma de referência.</p>
+              <p><strong>1 -</strong> BWA-MEM:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>bwa mem -M -t 24 [/CAMINHO/GENOMA/arquivo.fa] [leitura_R1.fastq.gz] [leitura_R2.fastq.gz] > [/CAMINHO/SAIDA/arquivo_alinhado.sam]
+# -t: threads | -M: marca alinhamentos secundários</code></pre></div>
+              <p><strong>2 -</strong> Converter SAM → BAM:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>samtools view -Sb [amostra.sam] > [amostra.bam]
+samtools sort -@ 24 -o [amostra.sorted.bam] [amostra.bam]</code></pre></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 7 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade7">
+              Atividade 7 — Boas Práticas GATK
+            </button>
+          </h2>
+          <div id="collapseAtividade7" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Marcar duplicatas e recalibrar qualidade de bases.</p>
+              <p><strong>1 -</strong> Picard MarkDuplicates:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>#!/bin/bash
+INPUT_DIR="/caminho/para/seus/bams"
+OUTPUT_DIR="/caminho/para/salvar/resultados"
+PICARD_JAR="/caminho/para/seu/picard.jar"
+MEMORY="30g"
+
+for i in "$INPUT_DIR"/*.bam; do
+    base=$(basename "$i")
+    prefix="${base%%.bam}"
+    out="${OUTPUT_DIR}/${prefix}.rmdup.bam"
+    met="${OUTPUT_DIR}/${prefix}.metrics"
+    java -Xmx"$MEMORY" -jar "$PICARD_JAR" MarkDuplicates METRICS_FILE="$met" I="$i" O="$out"
+done</code></pre></div>
+              <p><strong>💡 Importante!</strong> Configure os caminhos no topo do script.</p><br>
+              <p><strong>2 -</strong> GATK BaseRecalibrator + ApplyBQSR:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>#!/bin/bash
+DIR_DUPLICATAS='/CAMINHO/ARQUIVOS/BAM/'
+DIR_OUTPUT='/CAMINHO/SAIDA/'
+REFHG38='/CAMINHO/hg38.fa'
+KNOWIND='/CAMINHO/known_indels.vcf.gz'
+KNOWSNP='/CAMINHO/dbsnp138.vcf.gz'
+KNOWMIND='/CAMINHO/Mills_1000G.vcf.gz'
+
+mkdir -p ${DIR_OUTPUT}
+cd ${DIR_DUPLICATAS}
+
+for i in $(ls -1 *.rmdup.bam | sed 's/.rmdup.bam//'); do
+  gatk --java-options "-Xmx60G -XX:ParallelGCThreads=24" BaseRecalibrator \
+    -I ${i}.rmdup.bam -R ${REFHG38} \
+    --known-sites ${KNOWIND} --known-sites ${KNOWSNP} --known-sites ${KNOWMIND} \
+    -O ${DIR_OUTPUT}/${i}.recal_data.table
+done
+
+for i in $(ls -1 *.rmdup.bam | sed 's/.rmdup.bam//'); do
+  gatk --java-options "-Xmx60G -XX:ParallelGCThreads=24" ApplyBQSR \
+    -R ${REFHG38} -I ${i}.rmdup.bam \
+    --bqsr-recal-file ${DIR_OUTPUT}${i}.recal_data.table \
+    -O ${DIR_OUTPUT}/${i}.recal.bam
+done</code></pre></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 8 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade8">
+              Atividade 8 — Chamada de Variantes
+            </button>
+          </h2>
+          <div id="collapseAtividade8" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Detecção e genotipagem de variantes genéticas (SNPs e indels).</p>
+              <p><strong>1 -</strong> GATK HaplotypeCaller:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>REFERENCE_GENOME="/caminho/genoma_referencia.fasta"
+INPUT_BAM_DIR="/caminho/bams_recalibrados"
+OUTPUT_DIR="/caminho/resultados_finais"
+MEMORY="100g"
+
+VARCALL_DIR="${OUTPUT_DIR}/1_variant_calling_gvcfs"
+FILTERED_DIR="${OUTPUT_DIR}/2_vcf_filtered"
+FINAL_DIR="${OUTPUT_DIR}/3_vcf_final"
+mkdir -p "$VARCALL_DIR" "$FILTERED_DIR" "$FINAL_DIR"
+
+# Passo 1: HaplotypeCaller
+for input_bam in "$INPUT_BAM_DIR"/*.recal.bam; do
+    prefix=$(basename "${input_bam}" .recal.bam)
+    gatk --java-options "-Xmx${MEMORY}" HaplotypeCaller \
+        -R "$REFERENCE_GENOME" -I "$input_bam" \
+        -O "${VARCALL_DIR}/${prefix}.g.vcf.gz" -ERC GVCF
+done
+
+# Passo 2: GenotypeGVCFs
+gatk --java-options "-Xmx${MEMORY}" GenotypeGVCFs \
+    -R "$REFERENCE_GENOME" "${VARCALL_DIR}/*.g.vcf.gz" \
+    -O "${FILTERED_DIR}/cohort_genotyped.vcf.gz"
+
+# Passo 3: VariantFiltration
+gatk --java-options "-Xmx${MEMORY}" VariantFiltration \
+    -R "$REFERENCE_GENOME" -V "${FILTERED_DIR}/cohort_genotyped.vcf.gz" \
+    -O "${FILTERED_DIR}/cohort_genotyped_filtered.vcf.gz" \
+    --filter-expression "QD < 2.0" --filter-name "QD2" \
+    --filter-expression "FS > 60.0" --filter-name "FS60" \
+    --filter-expression "MQ < 40.0" --filter-name "MQ40"
+
+# Passo 4: SelectVariants (apenas PASS)
+gatk --java-options "-Xmx${MEMORY}" SelectVariants \
+    -R "$REFERENCE_GENOME" -V "${FILTERED_DIR}/cohort_genotyped_filtered.vcf.gz" \
+    -O "${FINAL_DIR}/cohort_final_PASS.vcf.gz" --exclude-filtered</code></pre></div>
+              <p><strong>💡 Importante!</strong> Configure os caminhos no topo do script.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 9 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade9">
+              Atividade 9 — Anotação das Variantes
+            </button>
+          </h2>
+          <div id="collapseAtividade9" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Anotação funcional das variantes com SnpEff e SnpSift.</p>
+              <p><strong>1 -</strong> Script de anotação:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>SNPEFF_JAR='/caminho/snpEff.jar'
+SNPSIFT_JAR='/caminho/SnpSift.jar'
+SNPEFF_CONFIG='/caminho/snpEff.config'
+MEMORY='-Xmx32g'
+GENOME_VERSION='hg38'
+DB_CLINVAR='/caminho/clinvar.vcf.gz'
+DB_NSFP='/caminho/dbNSFP_database.txt.gz'
+INPUT_VCF_DIR='/caminho/vcf_final/'
+SAMPLE_NAME='cohort_genotyped_filtered_PASS'
+OUTPUT_ANN_DIR='/caminho/anotacoes/'
+
+mkdir -p "$OUTPUT_ANN_DIR"
+java "$MEMORY" -jar "$SNPEFF_JAR" -c "$SNPEFF_CONFIG" -v "$GENOME_VERSION" \
+  "${INPUT_VCF_DIR}/${SAMPLE_NAME}.vcf.gz" > "${OUTPUT_ANN_DIR}/${SAMPLE_NAME}.snpeff.vcf"</code></pre></div>
+              <p><strong>💡 Importante!</strong> Configure os caminhos no topo do script.</p><br>
+              <p><strong>2 -</strong> Separar amostras em arquivos individuais:</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>INPUT_VCF="/caminho/arquivo_multi_amostra.vcf.gz"
+OUTPUT_DIR="/caminho/vcfs_individuais"
+mkdir -p "$OUTPUT_DIR"
+
+for sample in $(bcftools query -l "$INPUT_VCF"); do
+    bcftools view -c 1 -s "$sample" -o "${OUTPUT_DIR}/${sample}_annotated.vcf" "$INPUT_VCF"
+done</code></pre></div>
+              <p><strong>3 -</strong> Converter VCF → MAF (para maftools):</p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code>FASTA='/CAMINHO/GENOMA.fasta'
+VEP_PATH='/CAMINHO/VEP/bin/'
+VEP_DATA='/CAMINHO/VEP/cache/'
+DIR_ENTRADA_VCF='/CAMINHO/VCFs/'
+DIR_SAIDA_MAF='/CAMINHO/MAF/'
+mkdir -p ${DIR_SAIDA_MAF}
+
+for i in *_annotated_final.vcf; do
+    SAMPLE_NAME=$(basename "$i" | cut -d'.' -f1)
+    vcf2maf.pl --input-vcf $i \
+        --output-maf ${DIR_SAIDA_MAF}/${SAMPLE_NAME}.maf \
+        --ncbi-build GRCh38 --ref-fasta ${FASTA} \
+        --vep-path ${VEP_PATH} --vep-data ${VEP_DATA} \
+        --tumor-id ${SAMPLE_NAME} --vcf-tumor-id ${SAMPLE_NAME}
+done</code></pre></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prática 10 -->
+        <div class="accordion-item border-0 shadow-sm rounded-3">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAtividade10">
+              Atividade 10 — Análises
+            </button>
+          </h2>
+          <div id="collapseAtividade10" class="accordion-collapse collapse" data-bs-parent="#accordionAtividades">
+            <div class="accordion-body">
+              <p><strong>Objetivo:</strong> Realizar análises com os dados processados.</p>
+              <p><strong>Tarefa:</strong> Explore o pacote <a href="https://www.bioconductor.org/packages/release/bioc/html/maftools.html" target="_blank">maftools</a> para gerar <a href="https://bioconductor.org/packages/release/bioc/vignettes/maftools/inst/doc/oncoplots.html" target="_blank"><strong>oncoplots</strong></a> e outras visualizações genômicas.</p>
+              <p><strong>⚠️ Utilize o software R!</strong></p>
+              <div class="code-container"><button class="copy-btn" onclick="copyCode(this)">📋</button><pre><code># Instalação (executar apenas uma vez):
+# if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+# BiocManager::install("maftools")
+
+library(maftools)
+laml.maf = system.file('extdata', 'tcga_laml.maf.gz', package = 'maftools')
+laml.clin = system.file('extdata', 'tcga_laml_annot.tsv', package = 'maftools')
+laml = read.maf(maf = laml.maf, clinicalData = laml.clin, verbose = FALSE)
+oncoplot(maf = laml, draw_titv = TRUE)</code></pre></div>
+              <p><strong>💡 Dica:</strong> Consulte a documentação do pacote para mais opções de visualização.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /accordion -->
+
+      <div class="groups-footer">
+        💬 <span>Ficou com dúvidas sobre as atividades?
+          <a href="https://groups.google.com/g/SEU_GRUPO_AQUI" target="_blank" rel="noopener">Pergunte no Google Groups →</a>
+        </span>
+      </div>
+
+    </div><!-- /conteudo -->
   </section>
 
-  <!-- Scripts -->
-    <script>
-              function copyCode(button) {
-                const code = button.nextElementSibling.innerText;
-                navigator.clipboard.writeText(code).then(() => {
-                  button.innerText = '✅';
-                  setTimeout(() => button.innerText = '📋', 1500);
-                });
-              }
-    </script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Abre automaticamente a prática se houver hash na URL
+    function copyCode(button) {
+      const code = button.nextElementSibling.innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        button.innerText = '✅';
+        setTimeout(() => button.innerText = '📋', 1500);
+      });
+    }
+    function loginUSP() {
+      // EM PRODUÇÃO: window.location.href = 'https://uspdigital.usp.br/wsusuario/oauthautorizacao?redirect_uri=' + encodeURIComponent(location.href) + '&response_type=code&client_id=SEU_CLIENT_ID';
+      localStorage.setItem('pub_user', JSON.stringify({ nome: 'Usuário USP', email: 'usuario@usp.br' }));
+      mostrar();
+    }
+    function logoutUSP() { localStorage.removeItem('pub_user'); location.reload(); }
+    function mostrar() {
+      const u = JSON.parse(localStorage.getItem('pub_user') || 'null');
+      if (u) {
+        document.getElementById('usp-gate').style.display = 'none';
+        document.getElementById('conteudo').style.display = 'block';
+        const bar = document.getElementById('usp-bar');
+        bar.style.display = 'flex';
+        document.getElementById('usp-nome').textContent = u.nome;
+        document.getElementById('usp-email').textContent = u.email;
+      }
+    }
+    mostrar();
     document.addEventListener("DOMContentLoaded", function () {
       const hash = window.location.hash;
       if (hash) {
@@ -863,26 +489,6 @@ permite gerar <a href="https://bioconductor.org/packages/release/bioc/vignettes/
       }
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
