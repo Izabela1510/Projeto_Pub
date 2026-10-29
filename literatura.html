@@ -118,5 +118,6 @@
     function logoutUSP(){ localStorage.removeItem('pub_user'); window.location.href='login.html'; }
     function marcarModulo(i,btn){ var D=new Set(JSON.parse(localStorage.getItem('pub_prog')||'[]')); D.add(i); localStorage.setItem('pub_prog',JSON.stringify([...D])); btn.textContent='✅ Concluído'; btn.classList.add('done'); btn.disabled=true; }
   </script>
+  <script src="atividade-envio.js"></script>
 </body>
 </html>

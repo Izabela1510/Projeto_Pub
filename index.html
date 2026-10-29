@@ -18,6 +18,15 @@
     .btn-login-hero:hover { background:#002850; color:white; transform:translateY(-2px); }
     .img-grid img { width:100%; height:220px; object-fit:contain; border-radius:12px; }
     @media(max-width:768px){ .img-grid img { height:160px; } }
+
+    /* Carrossel da Home (desliza com o dedo no celular) */
+    .hero-carousel { max-width: 720px; margin: 0 auto; padding-bottom: 42px; }
+    .hero-carousel .carousel-item img { width: 100%; height: 300px; object-fit: contain; border-radius: 12px; background:#fff; }
+    .hero-carousel .carousel-indicators { bottom: 0; margin-bottom: 0; }
+    .hero-carousel .carousel-indicators [data-bs-target] { background-color: #003B6F; width: 10px; height: 10px; border-radius: 50%; border: 0; margin: 0 5px; }
+    .hero-carousel .carousel-control-prev-icon, .hero-carousel .carousel-control-next-icon { filter: invert(1) grayscale(1) brightness(.3); }
+    .hero-carousel .carousel-control-prev, .hero-carousel .carousel-control-next { width: 12%; }
+    @media (max-width: 576px) { .hero-carousel .carousel-item img { height: 220px; } }
   </style>
 </head>
 <body>
@@ -67,16 +76,29 @@
     </div>
 
     <div class="card shadow-sm border-0 p-4 mt-4" style="border-radius:20px;max-width:900px;margin:0 auto;">
-      <div class="row img-grid g-3 justify-content-center text-center">
-        <div class="col-12 col-sm-6 col-md-4">
-          <img src="https://www.mdpi.com/ijms/ijms-25-13418/article_deploy/html/images/ijms-25-13418-g001.png" alt="Figura 1 - MDPI" class="shadow-sm">
+      <div id="carouselHome" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="5000" data-bs-touch="true">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Imagem 1"></button>
+          <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="1" aria-label="Imagem 2"></button>
+          <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="2" aria-label="Imagem 3"></button>
         </div>
-        <div class="col-12 col-sm-6 col-md-4">
-          <img src="https://i0.wp.com/blog.mendelics.com.br/wp-content/uploads/2020/06/PT-ilustrac%CC%A7o%CC%83es-gene-e-protei%CC%81na-v4-1.png?ssl=1" alt="Gene e proteína" class="shadow-sm">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://www.mdpi.com/ijms/ijms-25-13418/article_deploy/html/images/ijms-25-13418-g001.png" alt="Figura 1 - MDPI">
+          </div>
+          <div class="carousel-item">
+            <img src="https://i0.wp.com/blog.mendelics.com.br/wp-content/uploads/2020/06/PT-ilustrac%CC%A7o%CC%83es-gene-e-protei%CC%81na-v4-1.png?ssl=1" alt="Gene e proteína">
+          </div>
+          <div class="carousel-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE_c_8HloMM_iGzrm7zpOqlJT_iqkdsuHI7w&s" alt="Genômica">
+          </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-4">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE_c_8HloMM_iGzrm7zpOqlJT_iqkdsuHI7w&s" alt="Genômica" class="shadow-sm">
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselHome" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Próxima</span>
+        </button>
       </div>
     </div>
   </section>
