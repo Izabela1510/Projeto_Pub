@@ -3,124 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anotação de Variantes</title>
+  <title>Módulo 9 — Anotação de Variantes</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body { background-color: #f8f9fa; color: #212529; padding: 40px; font-family: "Inter", sans-serif; }
-    h1 { margin-bottom: 30px; text-align: center; font-weight: 700; color: #0d1b2a; }
-    .card { margin-bottom: 20px; border: none; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .card-title { color: #0d1b2a; font-weight: 600; }
-    .img-example { margin-top: 15px; border-radius: 8px; border: 1px solid #dee2e6; }
-    .practice-box { transition: all 0.2s ease; border-radius: 12px; }
-    .practice-box a { text-decoration: none; color: #212529; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; font-weight: 600; }
-    .practice-box:hover { background-color: #e9f2ff; transform: translateY(-2px); box-shadow: 0 3px 10px rgba(0,102,255,0.2); }
-    .practice-box:hover span:last-child { transform: translateX(5px); transition: transform 0.2s ease; color: #007bff; }
-    #usp-gate { background:#f8f8f5; border:1px solid #ddd; border-radius:14px; padding:2rem 2.5rem; max-width:460px; margin:2rem auto; text-align:center; }
-    #usp-gate h2 { font-size:19px; color:#003B6F; margin:0 0 .5rem; }
-    #usp-gate p { font-size:14px; color:#666; line-height:1.6; margin:0 0 1.2rem; }
-    .btn-usp { display:inline-flex; align-items:center; gap:10px; background:#003B6F; color:white; padding:13px 24px; border-radius:8px; font-size:14px; font-weight:700; border:none; cursor:pointer; transition:background .2s; }
-    .btn-usp:hover { background:#002850; }
-    .usp-info { background:#E8EFF7; border:1px solid #B0C4D8; border-radius:8px; padding:.7rem 1rem; font-size:12px; color:#1A3050; margin-top:1rem; text-align:left; line-height:1.6; }
-    #usp-bar { display:none; background:#E8EFF7; border:1px solid #B0C4D8; border-radius:8px; padding:7px 14px; font-size:13px; color:#1A3050; margin-bottom:1.2rem; align-items:center; gap:10px; }
-    #usp-bar button { margin-left:auto; background:transparent; border:1px solid #B0C4D8; border-radius:5px; padding:3px 10px; font-size:12px; color:#555; cursor:pointer; }
-    #usp-bar button:hover { color:#c00; border-color:#c00; }
-    #conteudo { display:none; }
-    .groups-footer { background:#E8EFF7; border:1px solid #B0C4D8; border-radius:10px; padding:1rem 1.4rem; margin-top:2rem; font-size:14px; color:#1A3050; display:flex; align-items:center; gap:10px; }
-    .groups-footer a { color:#003B6F; font-weight:700; text-decoration:none; }
-    .groups-footer a:hover { text-decoration:underline; }
+    body{background-color:#f8f9fa;color:#212529;padding:40px;font-family:"Inter",sans-serif;}
+    h1{margin-bottom:30px;text-align:center;font-weight:700;color:#0d1b2a;}
+    .card{margin-bottom:20px;border:none;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+    .card-title{color:#0d1b2a;font-weight:600;}
+    .modulo-badge{display:inline-block;background:#E8EFF7;color:#003B6F;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:100px;border:1px solid #B0C4D8;margin-bottom:1rem;}
+    .section-divider{border:none;border-top:2px dashed #dee2e6;margin:2.5rem 0;}
+    .ref-section h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#888;margin-bottom:.8rem;}
+    .ref-block{background:#f4f4f0;border-left:3px solid #1A6B4A;border-radius:0 8px 8px 0;padding:.8rem 1.2rem;margin-bottom:.5rem;font-size:13px;color:#333;line-height:1.6;}
+    .ref-block a{color:#1A6B4A;font-weight:600;}
+    .ativ-section{background:#EAF0FF;border-radius:12px;padding:1.4rem 1.6rem;margin:2rem 0;}
+    .ativ-section h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#0044cc;margin-bottom:1rem;}
+    .code-container{background:#1e1e1e;border-radius:8px;padding:16px;position:relative;overflow-x:auto;margin-top:10px;}
+    .code-container pre{margin:0;font-family:'Fira Code',monospace;font-size:13px;color:#e0e0e0;white-space:pre-wrap;}
+    .copy-btn{position:absolute;top:8px;right:8px;background:none;border:none;color:#888;cursor:pointer;font-size:15px;}
+    .copy-btn:hover{color:#fff;}
+    .nav-modulos{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #dee2e6;flex-wrap:wrap;gap:1rem;}
+    .btn-modulo{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;transition:all .2s;}
+    .btn-anterior{background:#f0f0ec;color:#555;border:1px solid #ddd;}
+    .btn-proximo{background:#1A6B4A;color:white;}
+    .btn-proximo:hover{background:#155A3D;color:white;transform:translateY(-1px);}
+    .btn-marcar{background:#1A6B4A;color:white;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:1rem;}
+    .btn-marcar.done{background:#aaa;cursor:default;}
+    #usp-bar{display:none;background:#E8EFF7;border:1px solid #B0C4D8;border-radius:8px;padding:7px 14px;font-size:13px;color:#1A3050;margin-bottom:1.2rem;align-items:center;gap:10px;}
+    #usp-bar button{margin-left:auto;background:transparent;border:1px solid #B0C4D8;border-radius:5px;padding:3px 10px;font-size:12px;color:#555;cursor:pointer;}
+    .groups-footer{background:#E8EFF7;border:1px solid #B0C4D8;border-radius:10px;padding:1rem 1.4rem;margin-top:2rem;font-size:14px;color:#1A3050;display:flex;align-items:center;gap:10px;}
+    .groups-footer a{color:#003B6F;font-weight:700;text-decoration:none;}
   </style>
 </head>
-
 <body>
-
-  <!-- BANNER GOOGLE GROUPS -->
-  <div style="background:#003B6F;color:white;padding:9px 1.5rem;font-size:13px;font-family:sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:-40px -40px 30px -40px;">
+  <div style="background:#003B6F;color:white;padding:9px 1.5rem;font-size:13px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:-40px -40px 30px -40px;">
     💬 Dúvidas sobre o curso?
-    <a href="https://groups.google.com/a/usp.br/g/abp.aeg" target="_blank" rel="noopener"
-       style="color:#F2C94C;font-weight:700;text-decoration:none;">
-      ✉️ Acesse o grupo de discussão no Google Groups →
-    </a>
+    <a href="https://groups.google.com/a/usp.br/g/abp.aeg" target="_blank" rel="noopener" style="color:#F2C94C;font-weight:700;text-decoration:none;">✉️ Acesse o Google Groups →</a>
   </div>
 
   <div class="container">
+    <div id="usp-bar">🎓 <span id="usp-nome"></span> &nbsp;·&nbsp; <span id="usp-email" style="color:#555"></span><button onclick="logoutUSP()">Sair</button></div>
+    <div class="text-center mb-4"><span class="modulo-badge">Módulo 9 de 10</span></div>
 
-    <!-- LOGIN USP -->
-    <div id="usp-gate">
-      <h2>🔒 Acesso restrito à USP</h2>
-      <p>Este conteúdo é exclusivo para a comunidade USP.<br>Faça login com sua conta institucional para continuar.</p>
-      <button class="btn-usp" onclick="loginUSP()">🎓 Entrar com conta USP</button>
-      <div class="usp-info">
-        <strong>Como funciona:</strong> você será redirecionado ao portal <code>oauth.usp.br</code>. Após o login com seu número USP e senha, voltará automaticamente a esta página.
+    <h1>📑 Anotação de Variantes</h1>
+
+    <div class="card p-4">
+      <div class="card-body">
+        <h3 class="card-title">Definição</h3>
+        <p>Anotação de variantes é o processo de atribuir significado biológico às variantes genéticas identificadas (SNPs, inserções ou deleções), determinando o possível impacto sobre genes e sua relevância funcional ou clínica.</p>
       </div>
     </div>
 
-    <div id="usp-bar">
-      🎓 <span id="usp-nome"></span> &nbsp;·&nbsp;
-      <span id="usp-email" style="color:#555"></span>
-      <button onclick="logoutUSP()">Sair</button>
+    <div class="card p-4">
+      <div class="card-body">
+        <h3 class="card-title">Ferramentas</h3>
+        <ul>
+          <li><strong>SnpEff:</strong> anota e prevê os efeitos de variantes genéticas em genes e proteínas (como alterações de aminoácidos).</li>
+          <li><strong>SnpSift:</strong> filtra e manipula variantes anotadas usando bancos de dados externos.</li>
+          <li><strong>Outras ferramentas:</strong> ANNOVAR e VEP Ensembl.</li>
+        </ul>
+        <p>💡 Use o SnpEff para anotar e depois o SnpSift para filtrar as variantes mais significativas.</p>
+      </div>
     </div>
 
-    <!-- CONTEÚDO PROTEGIDO -->
-    <div id="conteudo">
+    <hr class="section-divider">
 
-      <h1>📑 Anotação de Variantes</h1>
-
-      <div class="card p-4">
-        <div class="card-body">
-          <h3 class="card-title">Definição</h3>
-          <p class="card-text">Anotação de variantes é o processo de atribuir significado biológico às variantes genéticas identificadas (como SNPs, inserções ou deleções). Determinando o possível impacto de cada variante sobre genes, bem como sua relevância funcional ou clínica.</p>
-        </div>
+    <div class="ref-section">
+      <h4>📚 Referências deste módulo</h4>
+      <div class="ref-block">
+        <a href="http://pcingola.github.io/SnpEff/" target="_blank">SNPEFF</a> — CINGOLANI, P. et al. <strong>SnpEff: a program for annotating and predicting the effects of single nucleotide polymorphisms.</strong> Fly (Austin), 2012.
       </div>
-
-      <div class="card p-4">
-        <div class="card-body">
-          <h3 class="card-title">Ferramentas</h3>
-          <ul class="card-text">
-            <li><strong>SnpEff:</strong> caixa de ferramentas para anotação de variantes genéticas e previsão de efeitos funcionais. Anota e prevê os efeitos de variantes genéticas em genes e proteínas (como alterações de aminoácidos).</li>
-            <li><strong>SnpSift:</strong> é uma ferramenta que anota variantes genômicas usando bancos de dados, filtros e manipula variantes genômicas anotadas.</li><br>
-            <p>💡 Depois de anotar seus arquivos usando o SnpEff, você pode usar o SnpSift para ajudar a filtrar grandes conjuntos de dados genômicos a fim de encontrar as variantes mais significativas para seu experimento.</p>
-            <li><strong>Outras ferramentas:</strong> Annovar e VEP Ensembl</li>
-          </ul>
-        </div>
+      <div class="ref-block">
+        <a href="http://pcingola.github.io/SnpEff/" target="_blank">SNPSIFT</a> — CINGOLANI, P. et al. <strong>SnpSift: a tool for filtering and manipulating VCF files.</strong> Frontiers in Genetics, 2012.
       </div>
+    </div>
 
-      <div class="practice-box card mt-4 shadow-sm border-0">
-        <a href="praticas.html#atividade9">
-          <span>Atividade 9</span>
-          <span style="font-size: 1.4rem;">➜</span>
-        </a>
+    <hr class="section-divider">
+
+    <div class="ativ-section">
+      <h4>🎯 Atividade 9 — Anotação das Variantes</h4>
+      <p><strong>Objetivo:</strong> Realizar a anotação funcional das variantes com SnpEff e SnpSift.</p>
+      <p><strong>1 —</strong> Anotar com SnpEff:</p>
+      <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">📋</button>
+        <pre>SNPEFF_JAR='/caminho/snpEff.jar'
+SNPEFF_CONFIG='/caminho/snpEff.config'
+MEMORY='-Xmx32g'
+GENOME_VERSION='hg38'
+INPUT_VCF='/caminho/vcf_final/cohort_final_PASS.vcf.gz'
+OUTPUT_ANN='/caminho/anotacoes/cohort.snpeff.vcf'
+
+java "$MEMORY" -jar "$SNPEFF_JAR" -c "$SNPEFF_CONFIG" -v "$GENOME_VERSION" \
+  "$INPUT_VCF" > "$OUTPUT_ANN"</pre>
       </div>
+      <p><strong>2 —</strong> Separar amostras em arquivos individuais:</p>
+      <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">📋</button>
+        <pre>INPUT_VCF="/caminho/arquivo_multi_amostra.vcf.gz"
+OUTPUT_DIR="/caminho/vcfs_individuais"
+mkdir -p "$OUTPUT_DIR"
 
-      <div class="groups-footer">
-        💬 <span>Ficou com dúvidas sobre este módulo?
-          <a href="https://groups.google.com/a/usp.br/g/abp.aeg" target="_blank" rel="noopener">Pergunte no Google Groups →</a>
-        </span>
+for sample in $(bcftools query -l "$INPUT_VCF"); do
+    bcftools view -c 1 -s "$sample" \
+      -o "${OUTPUT_DIR}/${sample}_annotated.vcf" "$INPUT_VCF"
+done</pre>
       </div>
+      <p><strong>3 —</strong> Converter VCF para MAF (para usar com maftools):</p>
+      <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">📋</button>
+        <pre>FASTA='/CAMINHO/GENOMA.fasta'
+VEP_PATH='/CAMINHO/VEP/bin/'
+VEP_DATA='/CAMINHO/VEP/cache/'
+DIR_VCF='/CAMINHO/VCFs/'
+DIR_MAF='/CAMINHO/MAF/'
+mkdir -p ${DIR_MAF}
 
-    </div><!-- /conteudo -->
-  </div><!-- /container -->
+for i in *_annotated_final.vcf; do
+    SAMPLE=$(basename "$i" | cut -d'.' -f1)
+    vcf2maf.pl --input-vcf $i \
+        --output-maf ${DIR_MAF}/${SAMPLE}.maf \
+        --ncbi-build GRCh38 --ref-fasta ${FASTA} \
+        --vep-path ${VEP_PATH} --vep-data ${VEP_DATA} \
+        --tumor-id ${SAMPLE} --vcf-tumor-id ${SAMPLE}
+done</pre>
+      </div>
+    </div>
+
+    <button class="btn-marcar" id="btn-marcar" onclick="marcarModulo(8,this)">✓ Marcar módulo como concluído</button>
+
+    <div class="groups-footer">
+      💬 <span>Ficou com dúvidas? <a href="https://groups.google.com/a/usp.br/g/abp.aeg" target="_blank" rel="noopener">Pergunte no Google Groups →</a></span>
+    </div>
+
+    <div class="nav-modulos">
+      <a class="btn-modulo btn-anterior" href="variantes.html">← Módulo anterior</a>
+      <a class="btn-modulo btn-proximo" href="analise.html">Próximo módulo →</a>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function loginUSP() {
-      // EM PRODUÇÃO: window.location.href = 'https://uspdigital.usp.br/wsusuario/oauthautorizacao?redirect_uri=' + encodeURIComponent(location.href) + '&response_type=code&client_id=SEU_CLIENT_ID';
-      localStorage.setItem('pub_user', JSON.stringify({ nome: 'Usuário USP', email: 'usuario@usp.br' }));
-      mostrar();
-    }
-    function logoutUSP() { localStorage.removeItem('pub_user'); location.reload(); }
-    function mostrar() {
-      const u = JSON.parse(localStorage.getItem('pub_user') || 'null');
-      if (u) {
-        document.getElementById('usp-gate').style.display = 'none';
-        document.getElementById('conteudo').style.display = 'block';
-        const bar = document.getElementById('usp-bar');
-        bar.style.display = 'flex';
-        document.getElementById('usp-nome').textContent  = u.nome;
-        document.getElementById('usp-email').textContent = u.email;
-      }
-    }
-    mostrar();
+    (function(){var u=localStorage.getItem('pub_user');if(!u){window.location.href='login.html?next=anotacao.html';}})();
+    window.addEventListener('DOMContentLoaded',function(){
+      var u=JSON.parse(localStorage.getItem('pub_user')||'null');
+      if(u){var b=document.getElementById('usp-bar');b.style.display='flex';document.getElementById('usp-nome').textContent=u.nome;document.getElementById('usp-email').textContent=u.email;}
+      var D=new Set(JSON.parse(localStorage.getItem('pub_prog')||'[]'));
+      if(D.has(8)){var btn=document.getElementById('btn-marcar');btn.textContent='✅ Concluído';btn.classList.add('done');btn.disabled=true;}
+    });
+    function logoutUSP(){localStorage.removeItem('pub_user');window.location.href='login.html';}
+    function marcarModulo(i,btn){var D=new Set(JSON.parse(localStorage.getItem('pub_prog')||'[]'));D.add(i);localStorage.setItem('pub_prog',JSON.stringify([...D]));btn.textContent='✅ Concluído';btn.classList.add('done');btn.disabled=true;}
+    function copyCode(btn){var code=btn.nextElementSibling.innerText;navigator.clipboard.writeText(code).then(function(){btn.innerText='✅';setTimeout(function(){btn.innerText='📋';},1500);});}
   </script>
-
 </body>
 </html>

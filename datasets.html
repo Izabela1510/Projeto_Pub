@@ -13,6 +13,11 @@
   </style>
 </head>
 <body>
+  <!-- Auth guard: só usuário logado acessa -->
+  <script>
+    (function(){ if(!localStorage.getItem('pub_user')){ window.location.href='login.html?next='+encodeURIComponent(location.pathname.split('/').pop()); } })();
+  </script>
+
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
@@ -24,7 +29,6 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="desenvolvimento.html">Desenvolvimento</a></li>
-          <li class="nav-item"><a class="nav-link" href="praticas.html">Atividades</a></li>
           <li class="nav-item"><a class="nav-link" href="referencia.html">Referências</a></li>
           <li class="nav-item"><a class="nav-link active" href="datasets.html">Datasets</a></li>
           <li class="nav-item"><a class="nav-link" href="autores.html">Autores</a></li>
@@ -33,6 +37,12 @@
       </div>
     </div>
   </nav>
+
+  <div style="background:#003B6F;color:white;padding:9px 1.5rem;font-size:13px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+    💬 Dúvidas sobre o curso?
+    <a href="https://groups.google.com/a/usp.br/g/abp.aeg" target="_blank" rel="noopener" style="color:#F2C94C;font-weight:700;text-decoration:none;">✉️ Acesse o Google Groups →</a>
+  </div>
+
 
   <!-- Banner Google Groups -->
   <div style="background:#003B6F;color:white;padding:9px 1.5rem;font-size:13px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
